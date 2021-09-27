@@ -143,6 +143,8 @@ __Notes__:
     if __name__ == '__main__':
         main()
     ```
+    - Here are some important HTML tags from indeed.com
+        - nice
 * Word frequency: 
     - Here is a really useful example but it reads out of a text file so it may be difficult to implement while using bs4 library (taken with permission from https://towardsdatascience.com/very-simple-python-script-for-extracting-most-common-words-from-a-story-1e3570d0b9d0 annotated with """text"""):
     ```python
