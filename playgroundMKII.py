@@ -13,19 +13,36 @@ def lookup(search): #Makes a request to the server. If the connection status is 
         print('Server responded: ', response.status_code)
     else:
         soup = BeautifulSoup(response.text, 'html.parser')
-        get_detail_data(soup)
+        get_href(soup)
 
 
-def get_detail_data(soup): #Scrapes the data of the webpage associated with the search url
-    href_link = []
-    right_link = []
+def get_href(soup): # Parses the HTML looking for 'a' tags. Then looks through 'a' tags to get 'href' tags
+    href_links = []
+    page_links = []
     for link in soup.find_all('a'):
-        print(link.get('href'))
-        #part = str(EachPart)
+        href_links.append(str((link.get('href'))))
+    for href in href_links:
+        if 'pagead' in href:
+            page_links.append(href)
+    get_links(page_links)
+    
+
+def get_links(links): #create a new url to scrape using the href tags/ create a new instance of Beautiful Soup
+    for link in links:
+        search = 'https://indeed.com' + link
+        response = requests.get(search)
+        if not response.ok:
+            print('Server responded: ', response.status_code)
+        else:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            get_href(soup)
+            with open ('wordcount.txt', 'w') as f:
+                f.write((soup.get_text()))
+
 
 def main():
     print("What kind of job are you looking for?")
-    job = 'Computer Science'
+    job = 'Software Engineer'
     #input('> ')
     print("Where city are you hoping to work in?")
     city = 'Fort Collins'
@@ -35,7 +52,6 @@ def main():
     #input('>')
     #f string to put search into url
     search = (f'https://www.indeed.com/jobs?q={job}&l={city}%2C {state}')
-    print(search)
     lookup(search)
 
 

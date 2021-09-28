@@ -190,4 +190,5 @@ __Notes__:
     - Here is another interesting example using NLP-Bag of Words and Scikit-learn libraries: https://www.analyticsvidhya.com/blog/2021/08/a-friendly-guide-to-nlp-bag-of-words-with-python-example/
         - This example reads the words into a dataset and then counts their frequency - this could be a good solution to making it work well with bs4
         - It would also make it easier to find relationships between keywords and company/ salary
+    - Or consider this one for similar reasons: https://www.geeksforgeeks.org/python-count-occurrences-of-each-word-in-given-text-file-using-dictionary/
     
