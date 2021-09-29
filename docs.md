@@ -146,6 +146,7 @@ __Notes__:
     - Here are some important HTML tags from indeed.com
         - nice
 * Word frequency: 
+    - Would be useful to call wordcount() within my getlinks() for loop - could fill a database with words as well as salary and company - might be more interesting to work with/ graph the data
     - Here is a really useful example but it reads out of a text file so it may be difficult to implement while using bs4 library (taken with permission from https://towardsdatascience.com/very-simple-python-script-for-extracting-most-common-words-from-a-story-1e3570d0b9d0 annotated with """text"""):
     ```python
     import collections
