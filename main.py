@@ -1,9 +1,6 @@
-import matplotlib.pyplot as plt
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-import re
-import tkinter as tk
 import re
 
 
@@ -46,32 +43,42 @@ def get_links(links): #create a new url to scrape using the href tags/ create a 
             soup = BeautifulSoup(response.text, 'html.parser')
             for tag in soup.find_all('div', class_='jobsearch-jobDescriptionText'): # parse new HTML and store all text in 'text' variable. Pass that variable to splitText to be cleaned up and organized
                 text += (' ' + soup.get_text())
+    print('Splicing text...')
     wordCount(text)
 
-def wordCount(text): #splitting all of our text into a list so it can be processed easily
-    print('Splitting text...')
+def wordCount(text): #write all of our text into a file so it can be processed easily
     words = text.split()
-    word_list = []
-    clean_word_list = []
+    clean_list = []
+    lower_list = []
+    print('Cleaning up...')
     for word in words:
-        if word not in word_list:
-            word_list.append(word)
-    print('Counting...')
-    for i in word_list:
-        clean_word_list.append(re.sub(r'[^a-z]', '', word_list[i]))
-    print([clean_word_list])
-    
+        x = re.sub("[^a-zA-Z]+", "", word) #Using regex to remove anything that is non-alphabetical
+        clean_list.append(x)
+    while("" in clean_list) :
+        clean_list.remove("")
+    for item in clean_list:
+        lower_list.append(item.lower())
+    #print(lower_list)
+    search_list = ['python','django','java','javascript','aws','c','frameworks','html','communication','management','analyst','analysis','sales','robotics','knowledge','experience','innovative','software','hardware','remote','data','algorithm','coding','api','design','oracle','jura','distribution','solving','creativity','leadership']
+    word_dict = {i:lower_list.count(i) for i in lower_list}
+    ordered_dict = {k: v for k, v in sorted(word_dict.items(), key=lambda item: item[1]) if k in search_list}
+    #print(ordered_dict)
+    #df = pd.DataFrame.from_dict(ordered_dict)
+    #graph(df)
+    print(ordered_dict) # could be passed to visually graph it
 
+def graph(df):
+    pass
 
 def main():
     print("What kind of job are you looking for?")
-    job = 'Software Engineer'
+    job = input('> ')
     #input('> ')
     print("Where city are you hoping to work in?")
-    city = 'Fort Collins'
+    city = input('> ')
     #input('> ')
     print("What state is that city in?")
-    state = 'CO'
+    state = input('> ')
     #input('>')
     #f string to put search into url
     search = (f'https://www.indeed.com/jobs?q={job}&l={city}%2C {state}&limit=50&sort=date')

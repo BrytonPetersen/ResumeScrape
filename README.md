@@ -1,34 +1,40 @@
 # Overview
 
-{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
-
-{Provide a description of the data set that you are analyzing.  Include the link of where you obtained the data.}
-
-{Describe your purpose for writing this software to analyze the data.}
-
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the data set, the questions and answers, the code running and a walkthrough of the code.}
+Small scale data scraping project that parses html from fifty job descriptions on indeed.com and shows the most common key words. 
 
 [Software Demo Video](http://youtube.link.goes.here)
 
+# Purpose
+
+To help me know which skills are most sought after in the job market and where I should focus my studies to best prepare to meet the expectations of employers. 
+
 # Data Analysis Results
 
-{List the questions and the answers you found by doing this analysis.}
+Most popular keywords by job and location: 
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
+__Environment__
+Made in Visual Studio Code on Windows 10 
 
-{Describe the programming language that you used and any libraries.}
+__Language(s)__
+This project was created entirely in python, although I would like to translate it into C++ at some point. 
 
-# Useful Websites
+__Libraries__
+- requests library
+- bs4 (BeautifulSoup) library
+- pandas library
+- regular expressions (re) library
 
-{Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
+
+# Useful Information and Notes
+
+* [Notes](/docs.md)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* Add a visual for the data
+* Find a more efficient way to clean up the data
+* Avoid counting html tag id's as text?
+* Make it into a larger scale project
+* Translate into C++?
